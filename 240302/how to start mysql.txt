@@ -1,0 +1,105 @@
+cmd 열고
+
+Microsoft Windows [Version 10.0.19042.631]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\EZEN>mysql -u root -p
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 11
+Server version: 8.0.36 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2024, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+4 rows in set (0.01 sec)
+
+mysql> CREATE DATABASE
+    -> ezen;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| ezen               |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use ezen;
+Database changed
+mysql> CREATE TABLE user (id varchar(32) primary key, pass varchar(64) not null);
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> show tables;
++----------------+
+| Tables_in_ezen |
++----------------+
+| user           |
++----------------+
+1 row in set (0.00 sec)
+
+mysql> desc user;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | varchar(32) | NO   | PRI | NULL    |       |
+| pass  | varchar(64) | NO   |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> INSERT INTO user VALUES ('test', '1234');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT * FROM user;
++------+------+
+| id   | pass |
++------+------+
+| test | 1234 |
++------+------+
+1 row in set (0.00 sec)
+
+mysql> INSERT INTO user VALUES('test2', '1111);
+    '> '^C
+    -> '^C
+    '> INSERT INTO user VALUES('test2', '1111');
+    '> INSERT INTO user VALUES('test', '1111');
+    '> INSERT INTO user(id) VALUES ('test2');
+    '>
+    '>
+    '> '^C
+    -> INSERT INTO user VALUES('test2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ''^C
+INSERT INTO user VALUES('test2', '1111');
+INSERT INTO user VALUES('test', '1' at line 3
+mysql> INSERT INTO user VALUES('test', '1111');
+ERROR 1062 (23000): Duplicate entry 'test' for key 'user.PRIMARY'
+mysql> INSERT INTO user(id) VALUES ('test2);
+    '> '^C
+    -> INSERT INTO user(id) VALUES ('test2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'INSERT INTO user(id) VALUES ('test2')' at line 3
+mysql>
+
+
+다음주:
+ SQL 2시간..
+ 투자 전략 코드..
+ 기후 데이터.. 카드 데이터 연결..
